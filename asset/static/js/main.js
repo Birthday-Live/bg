@@ -351,7 +351,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // ==================== 运行时间 ====================
 function updateRuntime() {
-    const start = new Date('2025-05-01T00:00:00');
+    const start = new Date('2026-02-24T21:32:00');
     const now = new Date();
     const diff = now - start;
 
@@ -551,4 +551,5 @@ if (window.location.hostname === 'localhost' || window.location.hostname === '12
     }
     
     // measureFPS(); // 取消注释以监控 FPS
+
 }
