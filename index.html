@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>水喝千束の个人空间</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="asset/ajax/libs/font-awesome/6.7.2/css/all.css">
+    <link rel="stylesheet" href="asset/static/css/style.css">
+</head>
+
+<body class="overflow-x-hidden">
+    <!-- 装饰元素 -->
+    <div class="decoration top-10 left-10 text-5xl">🌸</div>
+    <div class="decoration top-1/4 right-20 text-4xl" style="animation-delay: 1.2s;">⭐</div>
+    <div class="decoration bottom-1/3 left-1/4 text-4xl" style="animation-delay: 2.4s;">💖</div>
+    <div class="decoration top-2/3 right-1/3 text-3xl" style="animation-delay: 1.8s;">🦄</div>
+    <div class="decoration bottom-20 right-10 text-4xl" style="animation-delay: 0.6s;">🍭</div>
+
+    <!-- 加载动画 -->
+    <div class="fixed inset-0 bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50 z-50 flex items-center justify-center transition-all duration-700" id="loader">
+        <div class="text-center">
+            <div class="relative w-28 h-28 mx-auto mb-10">
+                <div class="absolute inset-0 rounded-full bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 opacity-20 animate-ping"></div>
+                <div class="absolute inset-0 rounded-full bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 animate-spin" style="animation: spin-scale 2s ease-in-out infinite; clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);"></div>
+                <div class="absolute inset-3 rounded-full glass"></div>
+            </div>
+            <div class="text-2xl font-semibold gradient-text mb-2">欢迎来到千束的空间</div>
+            <div class="text-sm text-gray-500">正在为你准备最美好的体验...</div>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <header class="fixed top-0 left-0 right-0 z-40 glass border-b border-white/30" style="backdrop-filter: saturate(200%) blur(60px); -webkit-backdrop-filter: saturate(200%) blur(60px);">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="https://xyqaq.cn/#home" class="text-2xl font-bold gradient-text hover:scale-105 transition-transform duration-300">
+                水喝千束の空间
+            </a>
+
+            <ul class="hidden md:flex space-x-1">
+                <li><a href="https://welcome.chisato.org.cn/#home" class="nav-link active text-gray-700 hover:text-pink-500 font-medium px-6 py-2 rounded-full hover:bg-white/40 transition-all duration-300">首页</a></li>
+                <li><a href="https://welcome.chisato.org.cn/#about" class="nav-link text-gray-700 hover:text-pink-500 font-medium px-6 py-2 rounded-full hover:bg-white/40 transition-all duration-300">关于</a></li>
+                <li><a href="https://welcome.chisato.org.cn/#gallery" class="nav-link text-gray-700 hover:text-pink-500 font-medium px-6 py-2 rounded-full hover:bg-white/40 transition-all duration-300">相册</a></li>
+                <li><a href="https://welcome.chisato.org.cn/#contact" class="nav-link text-gray-700 hover:text-pink-500 font-medium px-6 py-2 rounded-full hover:bg-white/40 transition-all duration-300">联系</a></li>
+            </ul>
+
+            <div class="flex space-x-2">
+                <button class="relative pulse-btn w-11 h-11 glass rounded-full flex items-center justify-center text-gray-600 hover:text-pink-500 hover:bg-white/60 transition-all duration-300 hover:scale-110" id="themeToggle">
+                    <i class="fas fa-sun text-base"></i>
+                </button>
+                <button class="relative pulse-btn w-11 h-11 glass rounded-full flex items-center justify-center text-gray-600 hover:text-pink-500 hover:bg-white/60 transition-all duration-300 hover:scale-110" id="musicToggle">
+                    <i class="fas fa-music text-base"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="pt-20">
+        <!-- 欢迎区 -->
+        <section id="home" class="min-h-screen flex items-center py-24">
+            <div class="max-w-7xl mx-auto px-6 w-full">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div class="text-center lg:text-left animate-in">
+                        <div class="inline-flex items-center gap-3 glass px-7 py-3 rounded-full mb-10 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                            <span class="text-2xl animate-bounce">💖</span>
+                            <span class="text-gray-700 font-semibold">欢迎来到我的世界</span>
+                        </div>
+
+                        <h1 class="text-6xl lg:text-8xl font-bold gradient-text mb-8 leading-tight">
+                            你好呀！<br>我是水喝千束
+                        </h1>
+
+                        <p class="text-2xl text-gray-600 mb-12 leading-relaxed font-light">
+                            一个热爱生活、喜欢分享的小可爱～<br>
+                            这里记录着我的日常、想法和美好时光。
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start">
+                            <a href="https://welcome.chisato.org.cn/#about" class="shine-btn bg-gradient-to-r from-pink-500 via-purple-500 to-pink-500 text-white px-10 py-5 rounded-full font-bold hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 text-lg">
+                                <span>了解我</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <a href="https://welcome.chisato.org.cn/#contact" class="shine-btn glass text-gray-700 px-10 py-5 rounded-full font-bold hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 text-lg">
+                                <i class="fas fa-envelope"></i>
+                                <span>联系我</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-center animate-in" style="transition-delay: 0.2s;">
+                        <div class="relative avatar-glow" id="avatarContainer">
+                            <div class="audio-visualizer" id="audioVisualizer"></div>
+                            
+                            <div class="w-96 h-96 rounded-full p-1" style="animation: float-delayed 6s ease-in-out infinite;">
+                                <div class="w-full h-full rounded-full overflow-hidden glass shadow-2xl">
+                                    <img src="https://welcome.chisato.org.cn/asset/static/imgs/avg.jpg" alt="小雨的头像" class="w-full h-full object-cover cursor-pointer hover:scale-110 transition-all duration-700" id="avatarImage">
+                                </div>
+                            </div>
+                            <div class="absolute -top-6 -right-6 text-5xl" style="animation: float 5s ease-in-out infinite; animation-delay: 0.5s;">💖</div>
+                            <div class="absolute -bottom-4 -left-8 text-4xl" style="animation: float 6s ease-in-out infinite; animation-delay: 1s;">✨</div>
+                            <div class="absolute top-1/2 -right-10 text-4xl" style="animation: float 7s ease-in-out infinite; animation-delay: 1.5s;">🌸</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 关于我 -->
+        <section id="about" class="py-24">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-20 animate-in">
+                    <h2 class="text-5xl lg:text-6xl font-bold gradient-text mb-5">关于我</h2>
+                    <p class="text-xl text-gray-600 max-w-2xl mx-auto font-light">
+                        嗨～让我来介绍一下自己吧！我是一个喜欢记录生活、分享美好的人。
+                    </p>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-10 items-start">
+                    <div class="animate-in">
+                        <div class="apple-card p-10 rounded-3xl">
+                            <div class="space-y-6">
+                                <p class="text-lg text-gray-700 leading-relaxed">
+                                    你好呀！我是小雨，一个有着伟大理想的普通人。我喜欢用文字和图片记录生活中的美好瞬间，
+                                    相信每一天都有值得感恩的事情。在这个小小的网络空间里，我会分享我的日常、心情还有一些有趣的发现。
+                                </p>
+                                <p class="text-lg text-gray-700 leading-relaxed">
+                                    我相信生活需要仪式感，也需要一点点小惊喜。无论是一杯温暖的奶茶，还是窗外的夕阳，
+                                    或者是朋友间的一个拥抱，这些看似平凡的时刻其实都很珍贵。
+                                </p>
+
+                                <div class="flex flex-wrap gap-3 pt-6">
+                                    <span class="tag-card glass px-5 py-3 rounded-full text-sm font-semibold hover:scale-110 transition-all duration-300 border border-pink-200 cursor-pointer">☕ JAVA</span>
+                                    <span class="tag-card glass px-5 py-3 rounded-full text-sm font-semibold hover:scale-110 transition-all duration-300 border border-blue-200 cursor-pointer">🐍 Python</span>
+                                    <span class="tag-card glass px-5 py-3 rounded-full text-sm font-semibold hover:scale-110 transition-all duration-300 border border-yellow-200 cursor-pointer">💻 CSS/JS</span>
+                                    <span class="tag-card glass px-5 py-3 rounded-full text-sm font-semibold hover:scale-110 transition-all duration-300 border border-purple-200 cursor-pointer">✨ ....</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="animate-in" style="transition-delay: 0.2s;">
+                        <div class="apple-card p-10 rounded-3xl">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-8">我的小日常</h3>
+                            <div class="space-y-5">
+                                <div class="flex items-center gap-5 p-5 rounded-2xl glass hover:scale-[1.03] transition-all duration-300 cursor-pointer">
+                                    <div class="w-14 h-14 bg-gradient-to-br from-yellow-400 to-orange-400 rounded-2xl flex items-center justify-center text-2xl shadow-xl">🌅</div>
+                                    <span class="text-gray-700 font-medium flex-1">早上起床第一件事呐，就是迅速起床然后继续躺下，保持睡眠充足</span>
+                                </div>
+                                <div class="flex items-center gap-5 p-5 rounded-2xl glass hover:scale-[1.03] transition-all duration-300 cursor-pointer">
+                                    <div class="w-14 h-14 bg-gradient-to-br from-pink-400 to-purple-400 rounded-2xl flex items-center justify-center text-2xl shadow-xl">😴</div>
+                                    <span class="text-gray-700 font-medium flex-1">睡前一定要放松自己，好好放松</span>
+                                </div>
+                                <div class="flex items-center gap-5 p-5 rounded-2xl glass hover:scale-[1.03] transition-all duration-300 cursor-pointer">
+                                    <div class="w-14 h-14 bg-gradient-to-br from-blue-400 to-green-400 rounded-2xl flex items-center justify-center text-2xl shadow-xl">🎨</div>
+                                    <span class="text-gray-700 font-medium flex-1">我不太喜欢收集颜色啦，所以你能看到我房间乱乱的</span>
+                                </div>
+                                <div class="flex items-center gap-5 p-5 rounded-2xl glass hover:scale-[1.03] transition-all duration-300 cursor-pointer">
+                                    <div class="w-14 h-14 bg-gradient-to-br from-green-400 to-blue-400 rounded-2xl flex items-center justify-center text-2xl shadow-xl">🍕</div>
+                                    <span class="text-gray-700 font-medium flex-1">无论心情好坏，都要记得喝足够的水和吃可爱的点心～</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 相册 -->
+        <section id="gallery" class="py-24">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-20 animate-in">
+                    <h2 class="text-5xl lg:text-6xl font-bold gradient-text mb-5">生活相册</h2>
+                    <p class="text-xl text-gray-600 max-w-2xl mx-auto font-light">
+                        记录生活中的美好瞬间，每一张照片都有属于它的故事。
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="apple-card rounded-3xl overflow-hidden animate-in group cursor-pointer">
+                        <div class="h-72 overflow-hidden image-loading">
+                            <img src="https://welcome.chisato.org.cn/asset/static/imgs/i/1.jpg" alt="朋友" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700">
+                        </div>
+                        <div class="p-7">
+                            <h3 class="text-xl font-bold text-gray-800 mb-3">我喜欢的图</h3>
+                            <p class="text-gray-600 leading-relaxed">千束和泷奈真好看</p>
+                        </div>
+                    </div>
+
+                    <div class="apple-card rounded-3xl overflow-hidden animate-in group cursor-pointer" style="transition-delay: 0.1s;">
+                        <div class="h-72 overflow-hidden image-loading">
+                            <img src="https://welcome.chisato.org.cn/asset/static/imgs/i/2.jpg" alt="随手一拍" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700">
+                        </div>
+                        <div class="p-7">
+                            <h3 class="text-xl font-bold text-gray-800 mb-3">依旧好看</h3>
+                            <p class="text-gray-600 leading-relaxed">普诺99</p>
+                        </div>
+                    </div>
+
+                    <div class="apple-card rounded-3xl overflow-hidden animate-in group cursor-pointer" style="transition-delay: 0.2s;">
+                        <div class="h-72 overflow-hidden image-loading">
+                            <img src="https://welcome.chisato.org.cn/asset/static/imgs/i/3.jpg" alt="随便一拍" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700">
+                        </div>
+                        <div class="p-7">
+                            <h3 class="text-xl font-bold text-gray-800 mb-3">随便一拍</h3>
+                            <p class="text-gray-600 leading-relaxed">好看。</p>
+                        </div>
+                    </div>
+
+                    <div class="apple-card rounded-3xl overflow-hidden animate-in group cursor-pointer" style="transition-delay: 0.3s;">
+                        <div class="h-72 overflow-hidden image-loading">
+                            <img src="https://welcome.chisato.org.cn/asset/static/imgs/i/4.jpg" alt="随便一拍" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700">
+                        </div>
+                        <div class="p-7">
+                            <h3 class="text-xl font-bold text-gray-800 mb-3">随便一拍</h3>
+                            <p class="text-gray-600 leading-relaxed">好看。</p>
+                        </div>
+                    </div>
+
+                    <div class="apple-card rounded-3xl overflow-hidden animate-in group cursor-pointer" style="transition-delay: 0.4s;">
+                        <div class="h-72 overflow-hidden image-loading">
+                            <img src="https://welcome.chisato.org.cn/asset/static/imgs/i/5.png" alt="MC" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700">
+                        </div>
+                        <div class="p-7">
+                            <h3 class="text-xl font-bold text-gray-800 mb-3">在北京天安门拍的照</h3>
+                            <p class="text-gray-600 leading-relaxed">（用ai去除了路人）</p>
+                        </div>
+                    </div>
+
+                    <div class="apple-card rounded-3xl overflow-hidden animate-in group cursor-pointer" style="transition-delay: 0.5s;">
+                        <div class="h-72 overflow-hidden image-loading">
+                            <img src="https://welcome.chisato.org.cn/asset/static/imgs/i/6.png" alt="MC" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700">
+                        </div>
+                        <div class="p-7">
+                            <h3 class="text-xl font-bold text-gray-800 mb-3">颐和园</h3>
+                            <p class="text-gray-600 leading-relaxed">拍的颐和园awa</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 联系方式 -->
+        <section id="contact" class="py-24">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-20 animate-in">
+                    <h2 class="text-5xl lg:text-6xl font-bold gradient-text mb-5">联系我</h2>
+                    <p class="text-xl text-gray-600 max-w-2xl mx-auto font-light">
+                        想和我聊天吗？欢迎通过以下方式联系我，期待和你成为朋友！
+                    </p>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-10">
+                    <div class="space-y-6 animate-in">
+                        <div class="apple-card p-7 rounded-3xl flex items-center gap-5 hover:scale-[1.02] transition-all duration-300 cursor-pointer">
+                            <div class="w-16 h-16 bg-gradient-to-br from-pink-500 to-purple-500 rounded-2xl flex items-center justify-center text-white text-2xl shadow-2xl">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-gray-800">电子邮箱</h3>
+                                <p class="text-gray-600">aaa@waterchisato.top</p>
+                            </div>
+                        </div>
+
+                        <div class="apple-card p-7 rounded-3xl flex items-center gap-5 hover:scale-[1.02] transition-all duration-300 cursor-pointer">
+                            <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-green-500 rounded-2xl flex items-center justify-center text-white text-2xl shadow-2xl">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-gray-800">所在地</h3>
+                                <p class="text-gray-600">中国·贵州</p>
+                            </div>
+                        </div>
+
+                        <div class="apple-card p-7 rounded-3xl flex items-center gap-5 hover:scale-[1.02] transition-all duration-300 cursor-pointer">
+                            <div class="w-16 h-16 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-2xl flex items-center justify-center text-white text-2xl shadow-2xl">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-gray-800">心情状态</h3>
+                                <p class="text-gray-600">今天也要开开心心哦～</p>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-center gap-4 pt-8">
+                            <a href="https://space.bilibili.com/226193288?spm_id_from=333.1007.0.0" class="w-14 h-14 bg-gradient-to-br from-pink-500 to-purple-500 rounded-2xl flex items-center justify-center text-white text-xl hover:shadow-2xl hover:-translate-y-2 hover:scale-110 transition-all duration-300">
+                                <i class="fab fa-bilibili"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-center animate-in" style="transition-delay: 0.2s;">
+                        <div class="apple-card p-12 rounded-3xl text-center max-w-md">
+                            <div class="text-7xl mb-8" style="animation: float 4s ease-in-out infinite;">💖</div>
+                            <blockquote class="text-xl text-gray-700 leading-relaxed mb-6 font-light">
+                                “对于时间流逝的残酷，今天的我仍没有察觉；对于将来某一天的我来说，我希望自己是值得骄傲的自己.”
+                            </blockquote>
+                            <footer class="text-pink-500 font-bold text-lg">— 水喝千束的座右铭</footer>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="glass border-t border-white/30 py-16">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="animate-in">
+                <div class="apple-card rounded-3xl p-8 inline-block mb-8">
+                    <div class="flex items-center gap-6">
+                        <div class="w-16 h-16 bg-gradient-to-r from-pink-400 to-purple-400 rounded-full flex items-center justify-center text-white text-2xl shadow-xl">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="flex gap-6 text-center">
+                            <div>
+                                <div class="text-3xl font-bold text-pink-500" id="days">0</div>
+                                <div class="text-sm text-gray-600 font-medium">天</div>
+                            </div>
+                            <div>
+                                <div class="text-3xl font-bold text-pink-500" id="hours">0</div>
+                                <div class="text-sm text-gray-600 font-medium">小时</div>
+                            </div>
+                            <div>
+                                <div class="text-3xl font-bold text-pink-500" id="minutes">0</div>
+                                <div class="text-sm text-gray-600 font-medium">分钟</div>
+                            </div>
+                            <div>
+                                <div class="text-3xl font-bold text-pink-500" id="seconds">0</div>
+                                <div class="text-sm text-gray-600 font-medium">秒</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="text-gray-700 mb-3 text-lg font-medium">© 2025 水喝千束の个人空间 | 用心记录每一个美好瞬间</p>
+                <p class="text-gray-500">感谢每一位来访的朋友 💕 愿你我都能在平凡中发现美好</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 音乐播放器 -->
+    <div class="fixed bottom-8 right-8 apple-card rounded-full p-5 shadow-2xl flex items-center gap-4 transition-all duration-300 hover:shadow-3xl hover:scale-105 z-30" id="musicPlayer">
+        <button class="w-14 h-14 bg-gradient-to-r from-pink-400 to-purple-400 rounded-full flex items-center justify-center text-white hover:scale-110 transition-all duration-300 shadow-lg" id="playBtn">
+            <i class="fas fa-play"></i>
+        </button>
+        <div class="text-gray-700 text-sm pr-3 font-medium" id="musicInfo">点击播放音乐</div>
+    </div>
+
+    <audio id="backgroundMusic" loop crossorigin="anonymous">
+        <source src="./static/music/28351072320_da1-1-1922.mp3" type="audio/mpeg">
+    </audio>
+    <script defer src="asset/script.js" data-website-id="51dcf8f7-69a8-4cb1-9e28-f6924d773a4c"></script>
+
+    <script src="asset/static/js/main.js"></script>
+</body>
+</html>
