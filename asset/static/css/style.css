@@ -1,0 +1,655 @@
+/* ==================== CSS变量定义 ==================== */
+:root {
+    --glass-bg: rgba(255, 255, 255, 0.75);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.03);
+    --shadow-md: 0 10px 40px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.1);
+    --blur-amount: 60px;
+}
+
+/* ==================== 全局样式 ==================== */
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Noto Sans SC', sans-serif;
+    background: linear-gradient(135deg, #fef5f8 0%, #f0f4ff 30%, #fff9f0 60%, #f5f0ff 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    transition: background 0.5s ease, color 0.5s ease;
+    transform: translateZ(0);
+    will-change: background;
+}
+
+/* ==================== 暗色主题 ==================== */
+body.dark-theme {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 30%, #0f3460 60%, #1a1a2e 100%);
+    color: #e0e0e0;
+}
+
+body.dark-theme .glass {
+    background: rgba(30, 30, 46, 0.75);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-theme .apple-card {
+    background: rgba(30, 30, 46, 0.75);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+body.dark-theme .text-gray-700 {
+    color: #d0d0d0 !important;
+}
+
+body.dark-theme .text-gray-600 {
+    color: #a0a0a0 !important;
+}
+
+body.dark-theme .text-gray-800 {
+    color: #e8e8e8 !important;
+}
+
+body.dark-theme .decoration {
+    opacity: 0.3;
+}
+
+body.dark-theme header {
+    background: rgba(30, 30, 46, 0.85) !important;
+    border-bottom-color: rgba(255, 255, 255, 0.15);
+}
+
+body.dark-theme header nav ul.mobile-menu-open {
+    background: rgba(30, 30, 46, 0.95);
+}
+
+/* ==================== 毛玻璃效果 ==================== */
+.glass {
+    background: var(--glass-bg);
+    backdrop-filter: saturate(200%) blur(var(--blur-amount));
+    -webkit-backdrop-filter: saturate(200%) blur(var(--blur-amount));
+    border: 1px solid var(--glass-border);
+    transform: translateZ(0);
+    will-change: backdrop-filter;
+}
+
+/* ==================== 导航栏固定 ==================== */
+header {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 9999 !important;
+    background: var(--glass-bg) !important;
+    backdrop-filter: saturate(200%) blur(var(--blur-amount)) !important;
+    -webkit-backdrop-filter: saturate(200%) blur(var(--blur-amount)) !important;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+/* ==================== 移动端汉堡菜单 ==================== */
+.mobile-menu-btn {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: flex;
+    }
+    
+    header nav ul {
+        display: none;
+    }
+    
+    header nav ul.mobile-menu-open {
+        display: flex;
+        position: fixed;
+        top: 72px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: var(--glass-bg);
+        backdrop-filter: saturate(200%) blur(var(--blur-amount));
+        -webkit-backdrop-filter: saturate(200%) blur(var(--blur-amount));
+        padding: 1rem;
+        gap: 0.5rem;
+        border-bottom: 1px solid var(--glass-border);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* ==================== 移动端可拖拽头像 ==================== */
+.mobile-avatar-float {
+    display: none;
+    position: fixed;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    z-index: 1000;
+    cursor: move;
+    touch-action: none;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease;
+}
+
+.mobile-avatar-float:active {
+    transform: scale(1.1);
+}
+
+.mobile-avatar-float img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .mobile-avatar-float {
+        display: block;
+        right: 20px;
+        bottom: 120px;
+    }
+    
+    #avatarContainer {
+        display: none !important;
+    }
+}
+
+/* ==================== 按钮效果 ==================== */
+.shine-btn {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+.shine-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+    transition: left 0.5s;
+    transform: translateZ(0);
+}
+
+.shine-btn:hover::before {
+    left: 100%;
+}
+
+/* ==================== 漂浮动画 ==================== */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg) translateZ(0);
+        opacity: 0.6;
+    }
+    50% {
+        transform: translateY(-25px) rotate(8deg) translateZ(0);
+        opacity: 0.9;
+    }
+}
+
+@keyframes float-delayed {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg) scale(1) translateZ(0);
+    }
+    50% {
+        transform: translateY(-20px) rotate(-5deg) scale(1.05) translateZ(0);
+    }
+}
+
+.decoration {
+    position: fixed;
+    pointer-events: none;
+    z-index: 1;
+    filter: drop-shadow(0 4px 20px rgba(255, 107, 157, 0.3));
+    animation: float 8s ease-in-out infinite;
+    will-change: transform, opacity;
+    transform: translateZ(0);
+}
+
+@media (max-width: 768px) {
+    .decoration {
+        font-size: 2rem !important;
+        opacity: 0.3;
+    }
+}
+
+/* ==================== 头像光晕 ==================== */
+@keyframes avatar-glow {
+    0%, 100% {
+        opacity: 0.4;
+        filter: blur(30px) brightness(1.1);
+        transform: scale(1) translateZ(0);
+    }
+    50% {
+        opacity: 0.7;
+        filter: blur(40px) brightness(1.3);
+        transform: scale(1.05) translateZ(0);
+    }
+}
+
+.avatar-glow::before {
+    content: '';
+    position: absolute;
+    inset: -12px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #ff6b9d, #c44569, #ffa07a, #ff6b9d, #c44569);
+    background-size: 400% 400%;
+    animation: avatar-glow 4s ease-in-out infinite;
+    z-index: -1;
+    will-change: transform, opacity, filter;
+    transform: translateZ(0);
+}
+
+/* ==================== 卡片效果 ==================== */
+.apple-card {
+    background: var(--glass-bg);
+    backdrop-filter: saturate(200%) blur(30px);
+    -webkit-backdrop-filter: saturate(200%) blur(30px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform: translateZ(0);
+    will-change: transform, box-shadow;
+}
+
+.apple-card:hover {
+    transform: translateY(-8px) scale(1.02) translateZ(0);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 1);
+    border-color: rgba(255, 255, 255, 0.8);
+}
+
+@media (max-width: 768px) {
+    .apple-card {
+        margin: 0 auto;
+        max-width: 100%;
+    }
+}
+
+/* ==================== 滚动动画 ==================== */
+.animate-in {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95) translateZ(0);
+    transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    will-change: transform, opacity;
+}
+
+.animate-in.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1) translateZ(0);
+}
+
+/* ==================== 音频可视化条 ==================== */
+.audio-bar {
+    position: absolute;
+    width: 5px;
+    border-radius: 3px;
+    transform-origin: bottom center;
+    will-change: transform, opacity, filter;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    
+    transition: height 0.05s ease-out, 
+                width 0.05s ease-out, 
+                opacity 0.05s ease-out;
+    
+    background: linear-gradient(
+        to top,
+        rgba(255, 107, 157, 0.9) 0%,
+        rgba(255, 107, 157, 0.95) 15%,
+        rgba(196, 69, 105, 1) 30%,
+        rgba(255, 160, 122, 0.95) 50%,
+        rgba(168, 230, 207, 0.9) 70%,
+        rgba(112, 214, 255, 0.85) 85%,
+        rgba(189, 147, 249, 0.9) 100%
+    );
+    
+    box-shadow: 
+        0 0 8px rgba(255, 107, 157, 0.4),
+        0 0 16px rgba(196, 69, 105, 0.3),
+        0 0 24px rgba(255, 160, 122, 0.2),
+        inset 0 0 8px rgba(255, 255, 255, 0.3);
+    
+    filter: brightness(1.1) saturate(1.2);
+    animation: rainbow-flow 8s ease-in-out infinite;
+}
+
+/* ==================== 彩虹渐变动画 ==================== */
+@keyframes rainbow-flow {
+    0% {
+        background: linear-gradient(
+            to top,
+            rgba(255, 107, 157, 0.9),
+            rgba(196, 69, 105, 1),
+            rgba(255, 160, 122, 0.95),
+            rgba(168, 230, 207, 0.9),
+            rgba(112, 214, 255, 0.85),
+            rgba(189, 147, 249, 0.9)
+        );
+    }
+    20% {
+        background: linear-gradient(
+            to top,
+            rgba(189, 147, 249, 0.9),
+            rgba(255, 107, 157, 0.9),
+            rgba(196, 69, 105, 1),
+            rgba(255, 160, 122, 0.95),
+            rgba(168, 230, 207, 0.9),
+            rgba(112, 214, 255, 0.85)
+        );
+    }
+    40% {
+        background: linear-gradient(
+            to top,
+            rgba(112, 214, 255, 0.85),
+            rgba(189, 147, 249, 0.9),
+            rgba(255, 107, 157, 0.9),
+            rgba(196, 69, 105, 1),
+            rgba(255, 160, 122, 0.95),
+            rgba(168, 230, 207, 0.9)
+        );
+    }
+    60% {
+        background: linear-gradient(
+            to top,
+            rgba(168, 230, 207, 0.9),
+            rgba(112, 214, 255, 0.85),
+            rgba(189, 147, 249, 0.9),
+            rgba(255, 107, 157, 0.9),
+            rgba(196, 69, 105, 1),
+            rgba(255, 160, 122, 0.95)
+        );
+    }
+    80% {
+        background: linear-gradient(
+            to top,
+            rgba(255, 160, 122, 0.95),
+            rgba(168, 230, 207, 0.9),
+            rgba(112, 214, 255, 0.85),
+            rgba(189, 147, 249, 0.9),
+            rgba(255, 107, 157, 0.9),
+            rgba(196, 69, 105, 1)
+        );
+    }
+    100% {
+        background: linear-gradient(
+            to top,
+            rgba(255, 107, 157, 0.9),
+            rgba(196, 69, 105, 1),
+            rgba(255, 160, 122, 0.95),
+            rgba(168, 230, 207, 0.9),
+            rgba(112, 214, 255, 0.85),
+            rgba(189, 147, 249, 0.9)
+        );
+    }
+}
+
+/* ==================== 音频可视化容器 ==================== */
+.audio-visualizer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) translateZ(0);
+    width: 420px;
+    height: 420px;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    will-change: opacity;
+    backface-visibility: hidden;
+}
+
+.audio-visualizer.active {
+    opacity: 1;
+}
+
+.audio-visualizer::before {
+    content: '';
+    position: absolute;
+    inset: -50px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(255, 107, 157, 0.15) 0%,
+        rgba(196, 69, 105, 0.1) 30%,
+        rgba(112, 214, 255, 0.08) 60%,
+        transparent 80%
+    );
+    animation: pulse-glow 3s ease-in-out infinite;
+    will-change: transform, opacity;
+    transform: translateZ(0);
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        transform: scale(0.95) translateZ(0);
+        opacity: 0.5;
+    }
+    50% {
+        transform: scale(1.05) translateZ(0);
+        opacity: 0.8;
+    }
+}
+
+/* ==================== 加载动画 ==================== */
+@keyframes spin-scale {
+    0%, 100% {
+        transform: rotate(0deg) scale(1) translateZ(0);
+    }
+    50% {
+        transform: rotate(180deg) scale(1.1) translateZ(0);
+    }
+}
+
+/* ==================== 渐变文字 ==================== */
+@keyframes gradient-flow {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #ff6b9d, #c44569, #ffa07a, #ff6b9d);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-flow 6s ease infinite;
+    will-change: background-position;
+    transform: translateZ(0);
+}
+
+/* ==================== 导航链接 ==================== */
+.nav-link {
+    position: relative;
+    transform: translateZ(0);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0) translateZ(0);
+    width: 80%;
+    height: 2px;
+    background: linear-gradient(90deg, #ff6b9d, #c44569);
+    border-radius: 2px;
+    transition: transform 0.3s ease;
+    will-change: transform;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    transform: translateX(-50%) scaleX(1) translateZ(0);
+}
+
+/* ==================== 标签卡片 ==================== */
+.tag-card {
+    position: relative;
+    overflow: hidden;
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+.tag-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+    transition: left 0.6s;
+    transform: translateZ(0);
+}
+
+.tag-card:hover::before {
+    left: 100%;
+}
+
+/* ==================== 滚动条美化 ==================== */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #ff6b9d, #c44569);
+    border-radius: 10px;
+    transition: background 0.3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #ff5a8d, #b43559);
+}
+
+/* ==================== 图片加载动画 ==================== */
+.image-loading {
+    position: relative;
+    overflow: hidden;
+    transform: translateZ(0);
+}
+
+.image-loading::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+    animation: shimmer 1.5s infinite;
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%) translateZ(0);
+    }
+    100% {
+        transform: translateX(100%) translateZ(0);
+    }
+}
+
+/* ==================== 脉冲按钮 ==================== */
+@keyframes pulse-ring {
+    0% {
+        transform: scale(1) translateZ(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5) translateZ(0);
+        opacity: 0;
+    }
+}
+
+.pulse-btn {
+    transform: translateZ(0);
+}
+
+.pulse-btn::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 2px solid currentColor;
+    opacity: 0;
+    animation: pulse-ring 2s ease-out infinite;
+    will-change: transform, opacity;
+    transform: translateZ(0);
+}
+
+/* ==================== 图片优化 ==================== */
+img {
+    transform: translateZ(0);
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+/* ==================== 移动端响应式 ==================== */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 3rem !important;
+        line-height: 1.2;
+    }
+    
+    h2 {
+        font-size: 2.5rem !important;
+    }
+    
+    p {
+        font-size: 1rem !important;
+    }
+    
+    section {
+        padding: 3rem 0 !important;
+    }
+    
+    .shine-btn {
+        padding: 1rem 2rem !important;
+        font-size: 1rem !important;
+    }
+    
+    #musicPlayer {
+        bottom: 20px !important;
+        right: 20px !important;
+        padding: 0.75rem !important;
+    }
+    
+    #musicPlayer button {
+        width: 3rem !important;
+        height: 3rem !important;
+    }
+    
+    #musicInfo {
+        display: none;
+    }
+}
+
+/* ==================== 性能优化 ==================== */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
